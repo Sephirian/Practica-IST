@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title>Pantalla de Bienvenida</title>
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.16.0/firebase-auth.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            //Poner la configuracion de Firebase aca.//
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        </script>
+
+    </head>
+
+    <body  class="container ">
+        <div id="login">
+            <h4 class="col-md-3 offset-md-5">Ingreso de Usuarios</h4>    
+            <input id="email2" type="email" placeholder="Ingresa tu email" class="form-control my-3 col-md-3 offset-md-5">
+            <input id=password2 type="password" placeholder="Ingresa tu password" class="form-control my-3 col-md-3 offset-md-5">
+            <button onclick="ingresar()" class="btn btn-outline-success col-md-3 offset-md-5">Ingreso</button>
+            <div class="alert alert-warning my-5 col-md-5 offset-md-4" role="alert">
+                Las claves de Acceso se deben solicitar al Adminsitrador de Turno.
+            </div>
+            <div class="alert alert-info my-5 col-md-5 offset-md-4" role="alert">
+                Aplicación Web de uso exclusivo para IST. Al acceder acepta los terminos y condiciones sujetos a su contrato de trabajo con respecto a la protección de la información y el uso ético de las herramientas de trabajo.
+              </div>
+            
+        </div>
+        <div id="contenido">
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

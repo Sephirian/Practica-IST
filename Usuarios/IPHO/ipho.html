@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>IPHO</title>
+  </head>
+  <body class="container">
+    <div id="form">
+    <h3>Identificación de Peligro de Higiene Ocupacional: SILICE</h3>
+
+    <div class="accordion" id="accordionExample">
+        <div class="card1">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                I- Antecedentes de Empresa Evaluada
+              </button>
+            </h2>
+          </div>
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <!-- Required meta tags -->
+                <div class="form-row">
+                  <div class="form-group col-md-4" >
+                    <label for="rut_emp1">RUT Empresa</label>
+                    <input class="form-control" id="rut_emp1" placeholder="11.111.111-1" class="form-control" required>
+                  </div>
+                  <div class="form-group col-md-8">
+                    <label for="nombre_emp1">Razon Social</label>
+                    <input class="form-control" id="nombre_emp1" placeholder="Empresa S.A." required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  
+                  <div class="form-group col-md-12">
+                    <label for="nombre_representante">Gerente o Representante Legal</label>
+                    <input type="text" class="form-control" id="nombre_representante" placeholder="Nombre Representante Legal" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-2">
+                    <label for="CIIU_emp1" >CIIU</label>
+                    <input class="form-control" id="CIIU_emp1" placeholder="Cod. SII-Ej, 11111"  required>
+                  </div>
+                  <div class="form-group col-md-10">
+                    <label >Descripción CIIU</label>
+                    <input class="form-control" id="giro_emp1" placeholder="Descripción CIIU (Ej, Transporte de Vehículos/Comercio Minoritario)" required>
+                  </div>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="tipoCalleemp">Tipo de Calle</label>
+                      <select class="custom-select" id="tipoCalleemp" >
+                        <option>(1) Avenida.</option>
+                        <option>(2) Calle</option>
+                        <option>(3) Pasaje</option>
+                      </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="nomCalle_emp1">Dirección Casa Matriz</label>
+                    <input type="text" class="form-control" id="nomCalle_emp1" placeholder="Dirección" required>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="numCalle_emp1">Número de Dirección</label>
+                    <input class="form-control" id="numCalle_emp1" required>
+                  </div>
+                  
+                </div>
+                  <div class="form-row">
+                    <div class="col-4">
+                      <label for="restDirec_emp">Resto Direccion Casa Matriz</label>
+                      <input id="restDirec_emp" type="text" class="form-control" placeholder="Resto dirección de casa matriz" >
+                    </div>
+                    <div class="col-4">
+                      <label for="localidad_emp">Localidad Empresa</label>
+                      <input id="localidad_emp" class="form-control" required></input>
+                    </div>
+                    <div class="col-4">
+                      <label for="comunas">Ciudad</label>
+                      <select id="comunas" class="form-control" >
+                          <option>ALGARROBO</option>
+                          <option>ALHUÉ</option>
+                          <option>ALTO BIOBÍO</option>
+                          <option>ALTO DEL CARMEN</option>
+                          <option>ALTO HOSPICIO</option>
+                          <option>ANCUD</option>
+                          <option>ANDACOLLO</option>
+                          <option>ANGOL</option>
+                          <option>ANTÁRTICA</option>
+                          <option>ANTOFAGASTA</option>
+                          <option>ANTUCO</option>
+                          <option>ARAUCO</option>
+                          <option>ANDACOLLO</option>
+                          <option>ARICA</option>
+                          <option>ANDACOLLO</option>
+                          <option>AYSÉN</option>
+                          <option>BUIN</option>
+                          <option>BULNES</option>
+                          <option>CABILDO</option>
+                          <option>CABO DE HORNOS (EX - NAVARINO)</option>
+                          <option>CABRERO</option>
+                          <option>CALAMA</option>
+                          <option>CALBUCO</option>                     
+                          <option>CALDERA</option>                     
+                          <option>CALERA DE TANGO</option>                     
+                          <option>CALLE LARGA</option>                     
+                          <option>CAMARONES</option>                     
+                          <option>CAMIÑA</option>                     
+                          <option>CANELA</option>                     
+                          <option>CAÑETE</option>                     
+                          <option>CARAHUE</option>                     
+                          <option>CARTAGENA</option>                     
+                          <option>CASABLANCA</option>                     
+                          <option>CASTRO</option>                     
+                          <option>CATEMU</option>                     
+                          <option>CAUQUENES</option>                     
+                          <option>CERRILLOS</option>                     
+                          <option>CERRO NAVIA</option>                     
+                          <option>CHAITÉN</option>                     
+                          <option>CHAÑARAL</option>                     
+                          <option>CHANCO</option>                     
+                          <option>CHÉPICA</option>                     
+                          <option>CHIGUAYANTE</option>                     
+                          <option>CHILE CHICO</option>                     
+                          <option>CHILLÁN</option>                     
+                          <option>CHILLÁN VIEJO</option>                     
+                          <option>CHOLCHOL</option>                     
+                          <option>CHONCHI</option>                     
+                          <option>CISNES</option>                     
+                          <option>COBQUECURA</option>                     
+                          <option>COCHAMÓ</option>                     
+                          <option>COCHRANE</option>                     
+                          <option>CODEGUA</option>                     
+                          <option>COELEMU</option>                     
+                          <option>COIHUECO</option>                     
+                          <option>COLCHANE</option>                     
+                          <option>COLBÚN</option>                     
+                          <option>COLINA</option>                     
+                          <option>COLLIPULLI</option>                     
+                          <option>COLTAUCO</option>                     
+                          <option>COMBARBALÁ</option>                     
+                          <option>CONCEPCIÓN</option>                     
+                          <option>CONCHALÍ</option>                     
+                          <option>CONCÓN</option>                     
+                          <option>CALBUCO</option>                     
+                          <option>CONSTITUCIÓN</option>
+                          <option>CONTULMO</option>
+                          <option>COPIAPÓ</option>
+                          <option>COQUIMBO</option>
+                          <option>CORONEL</option>
+                          <option>CORRAL</option>
+                          <option>COYHAIQUE</option>
+                          <option>CUNCO</option>
+                          <option>CURACAUTÍN</option>
+                          <option>CURACAVÍ</option>
+                          <option>CURACO DE VÉLEZ</option>
+                          <option>CURANILAHUE</option>
+                          <option>CURARREHUE</option>
+                          <option>CUREPTO</option>
+                          <option>CURICÓ</option>
+                          <option>DALCAHUE</option>
+                          <option>DIEGO DE ALMAGRO</option>
+                          <option>DOÑIHUE</option>
+                          <option>EL BOSQUE</option>
+                          <option>EL CARMEN</option>
+                          <option>EL MONTE</option>
+                          <option>EL QUISCO</option>
+                          <option>EL TABO</option>
+                          <option>EMPEDRADO</option>
+                          <option>ERCILLA</option>
+                          <option>ESTACIÓN CENTRAL</option> 
+                          <option>FLORIDA</option>
+                          <option>FREIRE</option>
+                          <option>FREIRINA</option>
+                          <option>FRESIA</option>
+                          <option>FRUTILLAR</option>
+                          <option>FUTALEUFÚ</option>
+                          <option>FUTRONO</option>
+                          <option>GALVARINO</option>
+                          <option>GENERAL LAGOS</option>
+                          <option>GORBEA</option>
+                          <option>GRANEROS</option>
+                          <option>GUAITECAS</option>
+                          <option>HIJUELAS</option>
+                          <option>HUALAIHUÉ</option>
+                          <option>HUALAÑÉ</option>
+                          <option>HUALPÉN</option>
+                          <option>HUALQUI</option>
+                          <option>HUARA</option>
+                          <option>HUASCO</option>
+                          <option>HUECHURABA</option>
+                          <option>ILLAPEL</option>
+                          <option>INDEPENDENCIA</option>
+                          <option>IQUIQUE</option>
+                          <option>ISLA DE MAIPO</option>  
+                          <option>ISLA DE PASCUA</option>  
+                          <option>JUAN FERNÁNDEZ</option> 
+                          <option>LA CALERA</option> 
+                          <option>LA CISTERNA</option> 
+                          <option>LA CRUZ</option> 
+                          <option>LA ESTRELLA</option> 
+                          <option>LA FLORIDA</option> 
+                          <option>LA GRANJA</option> 
+                          <option>LA HIGUERA</option> 
+                          <option>LA LIGUA</option> 
+                          <option>LA PINTANA</option> 
+                          <option>LA REINA</option> 
+                          <option>LA SERENA</option> 
+                          <option>LA UNIÓN</option> 
+                          <option>LAGO RANCO</option> 
+                          <option>LAGO VERDE</option> 
+                          <option>LAGUNA BLANCA</option> 
+                          <option>LAJA</option>
+                          <option>LAMPA</option>
+                          <option>LANCO</option>
+                          <option>LAS CABRAS</option> 
+                          <option>LAS CONDES</option> 
+                          <option>LAUTARO</option>
+                          <option>LEBU</option>
+                          <option>LICANTÉN</option>
+                          <option>LIMACHE</option>
+                          <option>LINARES</option>
+                          <option>LITUECHE</option>
+                          <option>LLAY LLAY</option> 
+                          <option>LLANQUIHUE</option>
+                          <option>LO BARNECHEA</option> 
+                          <option>LO ESPEJO</option> 
+                          <option>LO PRADO</option> 
+                          <option>LOLOL</option>
+                          <option>LONCOCHE</option>
+                          <option>LONGAVÍ</option>
+                          <option>LONQUIMAY</option>
+                          <option>LOS ÁLAMOS</option> 
+                          <option>LOS ANDES</option> 
+                          <option>LOS ÁNGELES</option> 
+                          <option>LOS LAGOS</option> 
+                          <option>LOS MUERMOS</option> 
+                          <option>LOS SAUCES</option> 
+                          <option>LOS VILOS</option> 
+                          <option>LOTA</option>
+                          <option>LUMACO</option>
+                          <option>MACHALÍ</option>
+                          <option>MACUL</option>
+                          <option>MÁFIL</option>
+                          <option>MAIPÚ</option>
+                          <option>MALLOA</option>
+                          <option>MARCHIHUE</option>
+                          <option>MARÍA ELENA</option> 
+                          <option>MARÍA PINTO</option> 
+                          <option>MARIQUINA</option>
+                          <option>MAULE</option>
+                          <option>MAULLÍN</option>
+                          <option>MEJILLONES</option>
+                          <option>MELIPEUCO</option>
+                          <option>MELIPILLA</option>
+                          <option>MOLINA</option>
+                          <option>MONTE PATRIA</option> 
+                          <option>MOSTAZAL</option>
+                          <option>MULCHÉN</option>
+                          <option>NACIMIENTO</option>
+                          <option>NANCAGUA</option>
+                          <option>NATALES</option>
+                          <option>NAVIDAD</option>
+                          <option>NEGRETE</option>
+                          <option>NINHUE</option>
+                          <option>ÑIQUÉN</option>
+                          <option>NOGALES</option>
+                          <option>NUEVA IMPERIAL</option> 
+                          <option>ÑUÑOA</option>
+                          <option>O’HIGGINS</option>
+                          <option>OLIVAR</option>
+                          <option>OLLAGÜE</option>
+                          <option>OLMUÉ</option>
+                          <option>OSORNO</option>
+                          <option>OVALLE</option>
+                          <option>PADRE HURTADO</option> 
+                          <option>PADRE LAS CASAS</option>  
+                          <option>PAIGUANO</option>
+                          <option>PAILLACO</option>
+                          <option>PAINE</option>
+                          <option>PALENA</option>
+                          <option>PALMILLA</option>
+                          <option>PANGUIPULLI</option>
+                          <option>PANQUEHUE</option>
+                          <option>PAPUDO</option>
+                          <option>PAREDONES</option>
+                          <option>PARRAL</option>
+                          <option>PEDRO AGUIRRE CERDA</option>  
+                          <option>PELARCO</option>
+                          <option>PELLUHUE</option>
+                          <option>PEMUCO</option>
+                          <option>PEÑAFLOR</option>
+                          <option>PEÑALOLÉN</option>
+                          <option>PENCAHUE</option>
+                          <option>PENCO</option>
+                          <option>PERALILLO</option>
+                          <option>PERQUENCO</option>
+                          <option>PETORCA</option>
+                          <option>PEUMO</option>
+                          <option>PICA</option>
+                          <option>PICHIDEGUA</option>
+                          <option>PICHILEMU</option>
+                          <option>PINTO</option>
+                          <option>PIRQUE</option>
+                          <option>PITRUFQUÉN</option>
+                          <option>PLACILLA</option>
+                          <option>PORTEZUELO</option>
+                          <option>PORVENIR</option>
+                          <option>POZO ALMONTE</option> 
+                          <option>PRIMAVERA</option>
+                          <option>PROVIDENCIA</option>
+                          <option>PUCHUNCAVÍ</option>
+                          <option>PUCÓN</option>
+                          <option>PUDAHUEL</option>
+                          <option>PUENTE ALTO</option> 
+                          <option>PUERTO MONTT</option> 
+                          <option>PUERTO OCTAY</option> 
+                          <option>PUERTO VARAS</option> 
+                          <option>PUMANQUE</option>
+                          <option>PUNITAQUI</option>
+                          <option>PUNTA ARENAS</option> 
+                          <option>PUQUELDÓN</option>
+                          <option>PURÉN</option>
+                          <option>PURRANQUE</option>
+                          <option>PUTAENDO</option>
+                          <option>PUTRE</option>
+                          <option>PUYEHUE</option>
+                          <option>QUEILÉN</option>
+                          <option>QUELLÓN</option>
+                          <option>QUEMCHI</option>
+                          <option>QUILACO</option>
+                          <option>QUILICURA</option>
+                          <option>QUILLECO</option>
+                          <option>QUILLÓN</option>
+                          <option>QUILLOTA</option>
+                          <option>QUILPUÉ</option>
+                          <option>QUINCHAO</option>
+                          <option>QUINTA DE TILCOCO</option>  
+                          <option>QUINTA NORMAL</option> 
+                          <option>QUINTERO</option>
+                          <option>QUIRIHUE</option>
+                          <option>RANCAGUA</option>
+                          <option>RÁNQUIL</option>
+                          <option>RAUCO</option>
+                          <option>RECOLETA</option>
+                          <option>RENAICO</option>
+                          <option>RENCA</option>
+                          <option>RENGO</option>
+                          <option>REQUÍNOA</option>
+                          <option>RETIRO</option>
+                          <option>RINCONADA</option>
+                          <option>RÍO BUENO</option> 
+                          <option>RÍO CLARO</option> 
+                          <option>RÍO HURTADO</option> 
+                          <option>RÍO IBÁÑEZ</option> 
+                          <option>RÍO NEGRO</option> 
+                          <option>RÍO VERDE</option> 
+                          <option>ROMERAL</option>
+                          <option>SAAVEDRA</option>
+                          <option>SAGRADA FAMILIA</option> 
+                          <option>SALAMANCA</option>
+                          <option>SAN ANTONIO</option> 
+                          <option>SAN BERNARDO</option> 
+                          <option>SAN CARLOS</option> 
+                          <option>SAN CLEMENTE</option> 
+                          <option>SAN ESTEBAN</option> 
+                          <option>SAN FABIÁN</option> 
+                          <option>SAN FELIPE</option> 
+                          <option>SAN FERNANDO</option> 
+                          <option>SAN GREGORIO</option> 
+                          <option>SAN IGNACIO</option> 
+                          <option>SAN JAVIER</option> 
+                          <option>SAN JOAQUÍN</option> 
+                          <option>SAN JOSÉ DE MAIPO</option> 
+                          <option>SAN JUAN DE LA COSTA</option> 
+                          <option>SAN MIGUEL</option> 
+                          <option>SAN NICOLÁS</option> 
+                          <option>SAN PABLO</option> 
+                          <option>SAN PEDRO</option> 
+                          <option>SAN PEDRO DE ATACAMA</option> 
+                          <option>SAN PEDRO DE LA PAZ</option>
+                          <option>SAN RAFAEL</option> 
+                          <option>SAN RAMÓN</option> 
+                          <option>SAN ROSENDO</option> 
+                          <option>SAN VICENTE</option> 
+                          <option>SANTA BÁRBARA</option> 
+                          <option>SANTA CRUZ</option> 
+                          <option>SANTA JUANA</option> 
+                          <option>SANTA MARÍA</option> 
+                          <option>SANTIAGO</option>
+                          <option>SANTO DOMINGO</option> 
+                          <option>SIERRA GORDA</option> 
+                          <option>TALAGANTE</option>
+                          <option>TALCA</option>
+                          <option>TALCAHUANO</option>
+                          <option>TALTAL</option>
+                          <option>TEMUCO</option>
+                          <option>TENO</option>
+                          <option>TEODORO SCHMIDT</option> 
+                          <option>TIERRA AMARILLA</option> 
+                          <option>TILTIL</option>
+                          <option>TIMAUKEL</option>
+                          <option>TIRÚA</option>
+                          <option>TOCOPILLA</option>
+                          <option>TOLTÉN</option>
+                          <option>TOMÉ</option>
+                          <option>TORRES DEL PAINE</option>
+                          <option>TORTEL</option>
+                          <option>TRAIGUÉN</option>
+                          <option>TREGUACO</option>
+                          <option>TUCAPEL</option>
+                          <option>VALDIVIA</option>
+                          <option>VALLENAR</option>
+                          <option>VALPARAÍSO</option>
+                          <option>VICHUQUÉN</option>
+                          <option>VICTORIA</option>
+                          <option>VICUÑA</option>
+                          <option>VILCÚN</option>
+                          <option>VILLA ALEGRE</option>
+                          <option>VILLA ALEMANA</option> 
+                          <option>VILLARRICA</option>
+                          <option>VIÑA DEL MAR</option>
+                          <option>VITACURA</option>
+                          <option>YERBAS BUENAS</option> 
+                          <option>YUMBEL</option>
+                          <option>YUNGAY</option>
+                          <option>ZAPALLAR</option>
+                          <option>HORCÓN</option>
+                          <option>PUERTO NATALES</option> 
+                      </select>
+                    </div>
+
+                  </div>
+                  <div class="form-row my-3">
+                    <div class="form-group col-md-6">
+                      <label for="tipo_empresa">Tipo de Organización</label>
+                        <select class="custom-select" id="tipo_empresa" >
+                          <option>Privado.</option>
+                          <option>Público.</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="emp_dpr">Empresa tiene Dpto de Prevención de Riesgos</label>
+                        <select class="custom-select" id="emp_dpr" >
+                          <option>Si.</option>
+                          <option>No.</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="form-row my-3">
+                    <div class="form-group col-md-6">
+                      <label for="rhs">Existe Reglamento de Higiene y Seguridad</label>
+                        <select class="custom-select" id="rhs" >
+                          <option>Si.</option>
+                          <option>No.</option>
+                          <option>No corresponde.</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label >Está incorporando el riesgo de Silice</label>
+                        <select class="custom-select" id="rs_1" >
+                          <option>Si.</option>
+                          <option>No.</option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class="form-row my-3">
+                    <div class="form-group col-md-6">
+                      <label for="riosh">Existe Reglamento de Orden, Higiene y Seguridad</label>
+                        <select class="custom-select" id="riosh" >
+                          <option>Si.</option>
+                          <option>No.</option>
+                          <option>No corresponde.</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="rs_2">Está incorporando el riesgo de Silice</label>
+                        <select class="custom-select" id="rs_2" >
+                          <option>Si.</option>
+                          <option>No.</option>
+                        </select>
+                    </div>
+                  </div>
+                  <button id="desplegar2" type="submit" class="btn btn-secondary" onclick="desplegarcard2()">Siguiente</button>
+                </div>
+            </div>
+          </div>
+
+          <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+              <button id="desplegarcard2"class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                II- Antecedentes del Centro de Trabajo Evaluado (CT)
+              </button>
+            </h2>
+          </div>
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="form-row">
+                <div class="form-group col-md-5">
+                  <label>Nombre Centro de Trabajo</label>
+                  <input type="text" class="form-control" id="Centro_trabajo" placeholder="Nombre Representante Legal" >
+                </div>
+                  <div class="form-group col-md-2">
+                    <label>Numero de sucursal</label>
+                    <input class="form-control" id="sucursal_gopist" placeholder="Asignado en GOPIST" >
+                  </div>
+                  <div class="form-group col-md-5">
+                    <label >Función de Empresa Evaluada en el Centro de Trabajo</label>
+                      <select class="custom-select" id="fun_emp" >
+                        <option>(1) Principal.</option>
+                        <option>(2) Contratista</option>
+                        <option>(3) Subcontratista</option>
+                        <option>(4) Servicios Transitorios</option>
+                      </select>
+                  </div>              
+                  <div class="form-group col-md-5">
+                    <label for="Empleador_p">Nombre Empleador Principal</label>
+                    <input class="form-control" id="Empleador_p" placeholder="Sociedad S.A." >
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="rut_emp2">RUT Empleador Principal</label>
+                    <input class="form-control" id="rut_emp2" placeholder="11.111.111-1" >
+                  </div>
+                  <div class="col-4">
+                    <label for="cierre_ct">¿Se conoce fecha de cierre del CT?</label>
+                      <select class="custom-select" id="cierre_ct" >
+                        <option>Si.</option>
+                        <option>No.</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-3">
+                    <label for="f_ini_ct">Fecha de Inicio del CT</label>
+                    <input type="date" class="form-control"  id="f_ini_ct" placeholder="Fecha de Inicio del CT" >
+                  </div>
+                  <div class="col-3">
+                    <label for="f_cie_ct">Fecha de Cierre del CT</label>
+                    <input type="date" class="form-control" id="f_cie_ct" placeholder="Fecha de Cierre del CT" >
+                  </div>
+                  <div class="col-6">
+                    <label for="est_ct">Estado Centro de Trabajo</label>
+                      <select class="custom-select" id="est_ct" >
+                        <option selected disabled value="">Selecciona...</option>
+                        <option>Activo.</option>
+                        <option>Caduco.</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-row my-3">
+                  <div class="col">
+                    <label for="geo_la">Geolocalización (Latitud) CT</label>
+                    <input type="text" class="form-control" id="geo_la" placeholder="Clic para geolocalizar" >
+                  </div>
+                  <div class="col">
+                    <label for="geo_lo">Geolocalización (Longitud) CT</label>
+                    <input type="text" class="form-control" id="geo_lo" placeholder="Clic para geolocalizar" >
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-5">
+                    <label for="nomCalle_emp2">Nombre de la calle en que se ubica centro de Trabajo</label>
+                    <input type="text" class="form-control" id="nomCalle_emp2" placeholder="Direccion centro de trabajo" >
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="numCalle_emp2">Número</label>
+                    <input class="form-control" id="numCalle_emp2" >
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="tipoCalle">Tipo de Calle</label>
+                      <select class="custom-select" id="tipoCalle" >
+                        <option>(1) Avenida.</option>
+                        <option>(2) Calle</option>
+                        <option>(3) Pasaje</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-5">
+                      <label for="restDirect_emp1">Resto Direccion Casa Matriz</label>
+                      <input type="text" class="form-control" id="restDirect_emp1" placeholder="Resto dirección de casa matriz" >
+                    </div>
+                    <div class="col-4">
+                      <label for="loc_ct">Localidad Centro de Trabajo</label>
+                      <input type="text" class="form-control" id="loc_ct" placeholder="Localidad" >
+                    </div>
+                    <div class="col-3">
+                      <label for="comuna_emp1">Comuna Centro de Trabajo</label>
+                      <input type="text" class="form-control" id="comuna_emp1" placeholder="Comuna" >
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-12 my-3">
+                      <label for="desc_act_ct">Descripción de la actividad de la empresa en el Centro de Trabajo.</label>
+                      <textarea class="form-control" id="desc_act_ct" ></textarea>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="cphs_ct">¿Existe Comité Paritario en CT o se está representando en CPHS de faena?</label>
+                        <select class="custom-select" id="cphs_ct" >
+                          <option>Si.</option>
+                          <option>No.</option>
+                          <option>No corresponde.</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="exp_ct">Se cuenta con experto en Prevencion de Riesgos en el CT</label>
+                          <select class="custom-select" id="exp_ct" >
+                            <option>Si.</option>
+                            <option>No.</option>
+                          </select>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="t_t">Total de Trabajadores</label>
+                        <input class="form-control" id="t_t" >
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="t_m">Total de Mujeres</label>
+                        <input class="form-control" id="t_m" >
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="t_h"> Total de Hombres</label>
+                        <input class="form-control" id="t_h" >
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="h_exp">Horas dedicadas en CT, del experto en prevencion de riesgos</label>
+                        <input class="form-control" id="h_exp" >
+                      </div>
+                    </div>
+                  </div>
+              <button type="submit" class="btn btn-secondary" onclick="desplegarcard3()">Siguiente</button>
+            </div>
+          </div>
+
+        <div class="card3">
+          <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+              <button id="desplegarcard3" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                III- Antecedentes de la Exposición</button></h2>
+          </div>
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="form-group my-3">
+                <label for="r_31">1.- Identificación de las áreas visitadas y/o analizadas, propias o de terceros.</label>
+                <textarea class="form-control" id="r_31" ></textarea>
+              </div>
+              <div class="form-group my-3">
+                <label for="r_32">2.- Descripción del proceso e Identificación de las etapas en las que hay presencia de sílice.</label>
+                <textarea class="form-control" id="r_32"></textarea>
+              </div>
+              <div class="form-group my-3">
+                <label for="r_33">3.- En la actualidad o proximamente, en los servicios, procesos productivos o de mantención, realizados o a realizar en dependencias propias o de terceros, se usan o se está en contacto con materias primas, suministros o productos que contienen sílice:</label>
+                <textarea class="form-control" id="r_33"> -- Complete este espacio y borre los elementos que no correspondan al presente documento -- Arena, Hormigón, Cuarzo, Cemento, Material Abrasivo que tiene sílice, Morteros, Minerales, Baldosas, Ladrillos, Granalla contaminada con material silíceo, Gravillas, Mármol, Cerámicas, Ladrillo refractario, Pomacita, Ripio, Rocas, Porcelana, Tierras filtrantes, Bolones, Granitos, Porcelanato, Porcelana dental, OTROS. No se identifican materias primas, suministros o productos conteniendo silíce.
+                </textarea>
+              </div>
+              <div class="form-group my-3">
+                <label for="r_34">4.- Los materiales o elementos anteriores se usan o están presentes en tareas que generan polvo en suspensión.</label>
+                <textarea class="form-control" id="r_34">-- Complete este espacio y borre los elementos que no correspondan al presente documento -- Pulir/lijar, Debastar, Cortar, Romper, Serrar, Taladrar, Tallar, Tornear, Perforar, Excavar, Demoler, Tamizar, Mezclar, Excavar, Vaciar bolsas, Barrer, Cargar, Chancar/Moler, Roleo/cuarteo muestras, Limpiar andamios, Limpiar con aire comprimido, Limpiar con chorro abrasivo en seco, Limpiar herramientas con materia sicíleos adheridos, Permanecer en lugares con polvo silíceos (durante supervisión, mantención, etc.), No se identifican procesos o tareas que generen polvos sicíleos en suspensión.
+                </textarea>
+              </div>
+              <button type="button" class="btn btn-secondary" onclick="desplegarcard4()">Siguiente</button>
+          </div>
+        </div>
+
+        <div class="card4">
+          <div class="card-header" id="headingFour">
+            <h2 class="mb-0">
+              <button id="desplegarcard4" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                IV- Conclusión Respecto al Centro de Trabajo Evaluado y otros lugares donde se presta servicio.
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="res1">
+                <label class="form-check-label" for="res1">Si existe peligro. Se identifica presencia de polvo de sílice en suspensión en los lugares de trabajo del centro de trabajo evaluado.</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="res2">
+                <label class="form-check-label" for="res2">Si existe peligro. Se identifica presencia de polvo de sílice en suspensión en los lugares de terceros donde se presta el servicio.</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="res3">
+                <label class="form-check-label" for="res3">Si existe peligro. En estapas futuras, en CT y /o lugares de terceros, existirá polvo de sílice en suspensión (ej: obra en construcción).</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="res4">
+                <label class="form-check-label" for="res4">No existe peligro. No se identifica materiales que contienen sílice que pudiesen originar polvo en suspensión.</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="res5">
+                <label class="form-check-label" for="res5">No existe peligro. Se identifica materiales que contienen sílice, pero los procesos no generan polvo en suspensión.</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="res6">
+                <label class="form-check-label" for="res6">No existe peligro. El centro de trabajo actualmente finalizó su proceso o labor, y se encuentra cerrado (CT caducó).</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="res7">
+                <label class="form-check-label" for="res7">Empresa ya no es adherente del IST(CT caducó).</label>
+              </div>
+              <button type="button" class="btn btn-secondary my-3" onclick="desplegarcard5()">Siguiente</button>
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card5">
+          <div class="card-header" id="headingFive">
+            <h2 class="mb-0">
+              <button id="desplegarcard5" class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                V- Datos de Identificación.
+              </button>
+            </h2>
+          </div>
+          <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <tr>
+                    <th scope="col">Asesor IST</th>
+                    <th scope="col">Representante de la Empresa</th>
+                  </tr>
+                  <tr>
+                    <td><input id="as1" class="form-control" type="text" placeholder="Apellido Paterno"></td>
+                    <td><input id="re1" class="form-control" type="text" placeholder="Apellido Paterno"></td>
+                  </tr>
+                  <tr>
+                    <td><input id="as2" class="form-control" type="text" placeholder="Apellido Materno"></td>
+                    <td><input id="re2" class="form-control" type="text" placeholder="Apellido Materno"></td>
+                  </tr>
+                  <tr>
+                    <td><input id="as3" class="form-control" type="text" placeholder="Apellido Nombres"></td>
+                    <td><input id="re3" class="form-control" type="text" placeholder="Apellido Nombres"></td>
+                  </tr>
+                  <tr>
+                    <td><input id="as4" class="form-control" type="text" placeholder="RUN/CI"></td>
+                    <td><input id="re4" class="form-control" type="text" placeholder="RUN/CI"></td>
+                  </tr>
+                  <tr>
+                    <td><input id="as5" class="form-control" type="text" placeholder="Email"></td>
+                    <td><input id="re5" class="form-control" type="text" placeholder="Email"></td>
+                  </tr>
+                  <tr>
+                    <td><input id="as6" class="form-control" type="text" placeholder="Fono"></td>
+                    <td><input id="re6" class="form-control" type="text" placeholder="Fono"></td>
+                  </tr>
+                </table>
+
+                <p class="my-3">*Las situaciones informadas en este documento, corresponden a aquellas declaradas por la empresa y/u observadas en el momento de la visita.*</p>
+                <p>*La presente actividad se enmarca dentro del Plan Nacional para la Erradicación de la Silicosis (PLANESI), establecido por el Gobierno de Chile.*</p>
+                <div><p >Fecha de la Actividad <input id="fechaact" type="date" class="form-control"></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+      <button type="submit" id= "submit_btn" class="btn-block my-3 btn btn-secondary col-md-4">Enviar</button>
+      <a href="/Usuarios/menu-usuarios.html" class="btn-block my-3 btn btn-warning col-md-4">Atrás</a>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="/Usuarios/IPHO/ipho.js"></script>
+  </body>
+</html>
